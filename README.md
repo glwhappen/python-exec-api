@@ -17,6 +17,27 @@
 - Docker
 - Docker Compose
 
+### 直接运行
+
+```
+version: '3.8'
+
+services:
+  flask-app:
+    image: glwhappen/backup-mysql:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_ENV=development
+      - TZ=Asia/Shanghai
+    volumes:
+      - .:/app
+
+
+```
+
+## 编译运行
+
 ### 步骤
 
 1. **克隆代码库**：
