@@ -19,12 +19,13 @@
 
 ### 直接运行
 
-```
+```yml
 version: '3.8'
 
 services:
   flask-app:
-    image: glwhappen/backup-mysql:latest
+    # image: glwhappen/backup-mysql:latest
+    image: registry.cn-beijing.aliyuncs.com/dockerhub_happen/backup-mysql:latest # 国内加速
     ports:
       - "5000:5000"
     environment:
@@ -32,8 +33,6 @@ services:
       - TZ=Asia/Shanghai
     volumes:
       - .:/app
-
-
 ```
 
 ## 编译运行
