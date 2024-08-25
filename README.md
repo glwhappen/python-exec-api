@@ -24,8 +24,8 @@ version: '3.8'
 
 services:
   flask-app:
-    # image: glwhappen/backup-mysql:latest
-    image: registry.cn-beijing.aliyuncs.com/dockerhub_happen/backup-mysql:latest # 国内加速
+    # image: glwhappen/python-exec-api:latest
+    image: registry.cn-beijing.aliyuncs.com/dockerhub_happen/python-exec-api:latest # 国内加速
     ports:
       - "5000:5000"
     environment:
