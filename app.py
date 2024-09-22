@@ -102,7 +102,7 @@ def run_code():
     exec_thread.join(timeout=60)  # 设置 1 分钟的超时时间
     
     if exec_thread.is_alive():
-        return jsonify({'status': 'error', 'error': 'Execution timed out', 'code': code}), 400
+        return jsonify({'status': 'error', 'error': 'Execution timed out', 'code': code}), 200
 
     # 获取 print 的输出内容
     result = output.getvalue()
