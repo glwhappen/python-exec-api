@@ -4,3 +4,14 @@ numpy
 requests
 flask
 gunicorn
+numpy
+pandas
+scipy
+matplotlib
+SQLAlchemy
+Pillow
+beautifulsoup4
+lxml
+PyYAML
+configparser
+Jinja2

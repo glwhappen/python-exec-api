@@ -15,4 +15,7 @@ COPY . /app
 EXPOSE 5000
 
 # 运行 Flask 应用
-CMD ["python", "app.py"]
+# CMD ["python", "app.py"]
+
+# 使用 Gunicorn 启动 Flask 应用，配置多线程和多进程
+CMD ["gunicorn", "-w", "4", "--threads", "5", "-b", "0.0.0.0:5000", "app:app"]

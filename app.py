@@ -84,7 +84,7 @@ def run_code():
     code = clean_code(code)
 
     # 设置内存限制为 200MB
-    resource.setrlimit(resource.RLIMIT_AS, (200 * 1024 * 1024, 1200 * 1024 * 1024))
+    resource.setrlimit(resource.RLIMIT_AS, (10 * 1024 * 1024 * 1024, 20 * 1024 * 1024 * 1024))
 
     # 创建安全的执行环境
     safe_globals = create_safe_globals(additional_globals=params)
@@ -102,12 +102,16 @@ def run_code():
     exec_thread.join(timeout=60)  # 设置 1 分钟的超时时间
     
     if exec_thread.is_alive():
-        return jsonify({'status': 'error', 'error': 'Execution timed out', 'code': code}), 200
+        return jsonify({'status': 'error', 'error': 'Execution timed out', 'code': code, 'full_code': full_code}), 200
 
     # 获取 print 的输出内容
     result = output.getvalue()
 
-    return jsonify({'status': 'success', 'result': result, 'code': code}), 200
+    if result.startswith('Error: '):
+        return jsonify({'status': 'error', 'result': result, 'code': code, 'full_code': full_code}), 200
+    else:
+
+        return jsonify({'status': 'success', 'result': result, 'code': code, 'full_code': full_code}), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
